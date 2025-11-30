@@ -1,15 +1,9 @@
 <script setup lang="ts">
 const email = ref("");
-const password = ref("");
-const rememberMe = ref(false);
 
-const handleLogin = () => {
-  // TODO: Implement login logic
-  console.log("Login attempt", {
-    email: email.value,
-    password: password.value,
-    rememberMe: rememberMe.value,
-  });
+const handleReset = () => {
+  // TODO: Implement password reset logic
+  console.log("Reset password attempt", { email: email.value });
 };
 </script>
 
@@ -26,14 +20,15 @@ const handleLogin = () => {
         <div class="p-8 md:p-12 flex flex-col justify-center">
           <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              Sign In
+              Reset Password
             </h1>
             <p class="text-gray-500 dark:text-gray-400">
-              Login to stay connected.
+              Enter your email address and we'll send you an email with
+              instructions to reset your password.
             </p>
           </div>
 
-          <form @submit.prevent="handleLogin" class="flex flex-col gap-8">
+          <form @submit.prevent="handleReset" class="flex flex-col gap-6">
             <UInput
               v-model="email"
               placeholder="Email"
@@ -41,36 +36,9 @@ const handleLogin = () => {
               size="xl"
             />
 
-            <UInput
-              v-model="password"
-              type="password"
-              placeholder="Password"
-              class="w-full"
-              size="xl"
-            />
-
-            <div class="flex items-center justify-between">
-              <UCheckbox v-model="rememberMe" label="Remember Me" />
-              <NuxtLink
-                to="/forgot-password"
-                class="text-sm text-primary-500 hover:text-primary-600"
-              >
-                Forgot Password?
-              </NuxtLink>
-            </div>
-
-            <UButton type="submit" block size="lg" color="primary">
-              Sign In
+            <UButton type="submit" block size="lg" color="primary" class="w-32">
+              Reset
             </UButton>
-
-            <div class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-              Create an Account
-              <NuxtLink
-                to="/signup"
-                class="text-primary-500 hover:text-primary-600"
-                >Sign Up</NuxtLink
-              >
-            </div>
           </form>
         </div>
 
@@ -82,7 +50,7 @@ const handleLogin = () => {
           <div class="relative z-10">
             <img
               src="https://placehold.co/400x400/3b82f6/white?text=Illustration"
-              alt="Login Illustration"
+              alt="Reset Password Illustration"
               class="max-w-full h-auto object-contain"
             />
           </div>
