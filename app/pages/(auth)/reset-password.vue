@@ -1,16 +1,26 @@
 <script setup lang="ts">
-const email = ref("");
 const password = ref("");
-const rememberMe = ref(false);
+const confirmPassword = ref("");
+const email = ref("");
 
-const handleLogin = () => {
-  // TODO: Implement login logic
-  console.log("Login attempt", {
-    email: email.value,
+function loadResetDetailsFromToken() {
+  const token = useRoute().query.token;
+  console.log("Token", token);
+  // TODO: Implement password update logic
+  email.value = "aceix@example.com";
+}
+
+function handleReset() {
+  // TODO: Implement password update logic
+  console.log("Update password attempt", {
     password: password.value,
-    rememberMe: rememberMe.value,
+    confirmPassword: confirmPassword.value,
   });
-};
+}
+
+onMounted(() => {
+  loadResetDetailsFromToken();
+});
 </script>
 
 <template>
@@ -26,21 +36,15 @@ const handleLogin = () => {
         <div class="p-8 md:p-12 flex flex-col justify-center">
           <div class="mb-8">
             <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              Sign In
+              Reset your password
             </h1>
             <p class="text-gray-500 dark:text-gray-400">
-              Login to stay connected.
+              Enter your new password to complete the reset process for your
+              account <em class="font-semibold">{{ email }}</em>
             </p>
           </div>
 
-          <form @submit.prevent="handleLogin" class="flex flex-col gap-8">
-            <UInput
-              v-model="email"
-              placeholder="Email"
-              class="w-full"
-              size="xl"
-            />
-
+          <form @submit.prevent="handleReset" class="flex flex-col gap-6">
             <UInput
               v-model="password"
               type="password"
@@ -49,28 +53,17 @@ const handleLogin = () => {
               size="xl"
             />
 
-            <div class="flex items-center justify-between">
-              <UCheckbox v-model="rememberMe" label="Remember Me" />
-              <NuxtLink
-                to="/forgot-password"
-                class="text-sm text-primary-500 hover:text-primary-600"
-              >
-                Forgot Password?
-              </NuxtLink>
-            </div>
+            <UInput
+              v-model="confirmPassword"
+              type="password"
+              placeholder="Confirm Password"
+              class="w-full"
+              size="xl"
+            />
 
-            <UButton type="submit" block size="lg" color="primary">
-              Sign In
+            <UButton type="submit" block size="lg" color="primary" class="w-32">
+              Submit
             </UButton>
-
-            <div class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-              Create an Account
-              <NuxtLink
-                to="/signup"
-                class="text-primary-500 hover:text-primary-600"
-                >Sign Up</NuxtLink
-              >
-            </div>
           </form>
         </div>
 
@@ -82,7 +75,7 @@ const handleLogin = () => {
           <div class="relative z-10">
             <img
               src="https://placehold.co/400x400/3b82f6/white?text=Illustration"
-              alt="Login Illustration"
+              alt="New Password Illustration"
               class="max-w-full h-auto object-contain"
             />
           </div>
