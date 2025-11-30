@@ -1,23 +1,19 @@
-  <!-- <div> -->
-    <!-- <NuxtRouteAnnouncer /> -->
-    <!-- <NuxtWelcome /> -->
-<!-- //     <NuxtView/> -->
-  <!-- </div> -->
-
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <div>
+    <NuxtRouteAnnouncer />
+    <UApp>
+      <NuxtPage />
+    </UApp>
+  </div>
 </template>
 
-<script setup>
-</script>
+<script setup></script>
 
 <style>
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 </style>
-
