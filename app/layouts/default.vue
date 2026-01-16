@@ -36,7 +36,7 @@
           </NuxtLink>
         </nav>
 
-        <!-- User/Logout at bottom -->
+        <!-- User/Logout at bottom of sideNav -->
         <div class="p-4 border-t border-[#DCDFE8]">
           <UButton
             variant="ghost"
@@ -75,7 +75,7 @@
             @click="showMobileMenu = !showMobileMenu"
           />
 
-          <!-- Search (Desktop) -->
+          <!-- Search -->
           <div class="hidden md:flex flex-1 max-w-md">
             <UInput
               icon="i-heroicons-magnifying-glass"

@@ -43,7 +43,6 @@
 
     <!-- Main Content Cards -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Sales Chart Placeholder (2/3 width) -->
       <div class="lg:col-span-2 bg-white p-6 rounded-2xl border border-[#DCDFE8] shadow-sm">
         <div class="flex items-center justify-between mb-8">
           <h2 class="text-lg font-bold text-[#01041B]">Sales Analytics</h2>
@@ -57,7 +56,6 @@
         </div>
       </div>
 
-      <!-- Recent Activities (1/3 width) -->
       <div class="bg-white p-6 rounded-2xl border border-[#DCDFE8] shadow-sm">
         <h2 class="text-lg font-bold text-[#01041B] mb-6">Top Selling Category</h2>
         <div class="space-y-6">
