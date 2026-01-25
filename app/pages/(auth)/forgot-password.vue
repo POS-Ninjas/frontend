@@ -1,9 +1,22 @@
 <script setup lang="ts">
-const email = ref("");
+import { AuthService, type ResetPasswordReqDto } from '~/services/auth.service';
 
-const handleReset = () => {
-  // TODO: Implement password reset logic
-  console.log("Reset password attempt", { email: email.value });
+const email = ref("");
+const isSubmitting = ref(false)
+
+async function handleReset() {
+  try {
+    isSubmitting.value = true
+    const payload: ResetPasswordReqDto = {
+      email: email.value
+    };
+    const res = await AuthService.resetPassword(payload);
+    console.log("Reset password attempt", { res });
+  } catch (err) {
+    console.error("An error occured: ", err);
+  } finally {
+    isSubmitting.value = false
+  }
 };
 </script>
 
@@ -36,7 +49,7 @@ const handleReset = () => {
               size="xl"
             />
 
-            <UButton type="submit" block size="lg" color="primary" class="w-32">
+            <UButton type="submit" block size="lg" color="primary" class="w-32" :loading="isSubmitting">
               Reset
             </UButton>
           </form>

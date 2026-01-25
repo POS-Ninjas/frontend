@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { AuthService, type SignupReqDto } from '~/services/auth.service';
+
+const router = useRouter();
+
 const firstName = ref("");
 const lastName = ref("");
 const email = ref("");
@@ -6,18 +10,28 @@ const phone = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 const agreeTerms = ref(false);
+const isSubmitting = ref(false);
 
-const handleSignup = () => {
-  // TODO: Implement signup logic
-  console.log("Signup attempt", {
-    firstName: firstName.value,
-    lastName: lastName.value,
-    email: email.value,
-    phone: phone.value,
-    password: password.value,
-    confirmPassword: confirmPassword.value,
-    agreeTerms: agreeTerms.value,
-  });
+async function handleSignup() {
+  try {
+    const fullName = `${firstName.value} ${lastName.value}`
+    const payload: SignupReqDto = {
+      username: '@' + fullName.replace(' ', '-').toLowerCase(),
+      fullname: fullName,
+      lastname: lastName.value,
+      email: email.value,
+      phone_number: phone.value,
+      password: password.value,
+      // agreeTerms: agreeTerms.value,
+    };
+    const signupRes = await AuthService.signup(payload);
+    console.log("Signup attempt", signupRes);
+    router.push({ name: 'dashboard' })
+  } catch (err) {
+    console.error("An error occured: ", err);
+  } finally {
+    isSubmitting.value = false
+  }
 };
 </script>
 
@@ -96,7 +110,7 @@ const handleSignup = () => {
               />
             </div>
 
-            <UButton type="submit" block size="lg" color="primary">
+            <UButton type="submit" block size="lg" color="primary" :loading="isSubmitting">
               Sign Up
             </UButton>
 
