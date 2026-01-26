@@ -1,15 +1,27 @@
 <script setup lang="ts">
+import { AuthService, type LoginReqDto } from '~/services/auth.service';
+
+const router = useRouter();
+
 const email = ref("");
 const password = ref("");
 const rememberMe = ref(false);
+const isSubmitting = ref(false);
 
-const handleLogin = () => {
-  // TODO: Implement login logic
-  console.log("Login attempt", {
-    email: email.value,
-    password: password.value,
-    rememberMe: rememberMe.value,
-  });
+async function handleLogin() {
+  try {
+    const payload: LoginReqDto = {
+      username: email.value,
+      password: password.value,
+    };
+    const loginRes = await AuthService.login(payload);
+    console.log("Login attempt", loginRes);
+    router.push({ name: 'dashboard' })
+  } catch (err) {
+    console.error("An error occured: ", err);
+  } finally {
+    isSubmitting.value = false
+  }
 };
 </script>
 
@@ -59,7 +71,7 @@ const handleLogin = () => {
               </NuxtLink>
             </div>
 
-            <UButton type="submit" block size="lg" color="primary">
+            <UButton type="submit" block size="lg" color="primary" :loading="isSubmitting">
               Sign In
             </UButton>
 

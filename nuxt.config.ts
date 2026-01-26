@@ -10,5 +10,12 @@ export default defineNuxtConfig({
     '@nuxt/test-utils'
   ],
 
-  css: ['~/assets/css/main.css']
+  css: ['~/assets/css/main.css'],
+
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.API_BASE_URL || "http://localhost:5000",
+    }
+  }
+
 })
