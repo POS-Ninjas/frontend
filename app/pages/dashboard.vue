@@ -103,7 +103,7 @@
       <UCard class="border-none shadow-sm rounded-2xl">
         <template #header>
           <div class="flex items-center justify-between">
-            <h3 class="font-bold text-[#01041B]">Top Products</h3>
+            <h3 class="font-bold text-white">Top Products</h3>
             <UButton variant="ghost" color="gray" label="Full List" size="xs" />
           </div>
         </template>
