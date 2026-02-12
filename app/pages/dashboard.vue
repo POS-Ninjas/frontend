@@ -125,35 +125,46 @@
 </template>
 
 <script setup>
+/**
+ * IMPORTS
+*/
+import { ref } from 'vue';
+
+/**
+ * LAYOUTS
+*/
 definePageMeta({ layout: 'default' })
 
-const view = ref('Last 7 Days')
+/**
+ * DUMMY DATA
+*/
+  const view = ref('Last 7 Days')
 
-const stats = [
-  { label: 'Total Sales', value: '$31,500', icon: 'i-heroicons-banknotes', bg: 'bg-blue-50', color: 'text-blue-500', progress: 75, progressColor: 'blue' },
-  { label: 'Total Cost', value: '$12,450', icon: 'i-heroicons-wallet', bg: 'bg-orange-50', color: 'text-orange-500', progress: 45, progressColor: 'orange' },
-  { label: 'Product Sold', value: '1,280 Pcs', icon: 'i-heroicons-shopping-bag', bg: 'bg-purple-50', color: 'text-purple-500', progress: 60, progressColor: 'purple' }
-]
+  const stats = [
+    { label: 'Total Sales', value: '$31,500', icon: 'i-heroicons-banknotes', bg: 'bg-blue-50', color: 'text-blue-500', progress: 75, progressColor: 'blue' },
+    { label: 'Total Cost', value: '$12,450', icon: 'i-heroicons-wallet', bg: 'bg-orange-50', color: 'text-orange-500', progress: 45, progressColor: 'orange' },
+    { label: 'Product Sold', value: '1,280 Pcs', icon: 'i-heroicons-shopping-bag', bg: 'bg-purple-50', color: 'text-purple-500', progress: 60, progressColor: 'purple' }
+  ]
 
-const revenueItems = [
-  { label: 'Net Profit', value: '$19,050', progress: 70, color: 'primary' },
-  { label: 'Operating Income', value: '$8,200', progress: 40, color: 'blue' },
-  { label: 'Taxes', value: '$4,350', progress: 15, color: 'orange' }
-]
+  const revenueItems = [
+    { label: 'Net Profit', value: '$19,050', progress: 70, color: 'primary' },
+    { label: 'Operating Income', value: '$8,200', progress: 40, color: 'blue' },
+    { label: 'Taxes', value: '$4,350', progress: 15, color: 'orange' }
+  ]
 
-const recentOrders = [
-  { id: '8542', customer: 'Alice Johnson', date: 'Jan 16, 2024', amount: '$450.00', status: 'Completed', statusColor: 'green' },
-  { id: '8541', customer: 'Robert Smith', date: 'Jan 15, 2024', amount: '$120.50', status: 'Pending', statusColor: 'orange' },
-  { id: '8540', customer: 'Charlie Brown', date: 'Jan 15, 2024', amount: '$89.00', status: 'Completed', statusColor: 'green' },
-  { id: '8539', customer: 'Diana Prince', date: 'Jan 14, 2024', amount: '$1,200.00', status: 'Processing', statusColor: 'blue' }
-]
+  const recentOrders = [
+    { id: '8542', customer: 'Alice Johnson', date: 'Jan 16, 2024', amount: '$450.00', status: 'Completed', statusColor: 'green' },
+    { id: '8541', customer: 'Robert Smith', date: 'Jan 15, 2024', amount: '$120.50', status: 'Pending', statusColor: 'orange' },
+    { id: '8540', customer: 'Charlie Brown', date: 'Jan 15, 2024', amount: '$89.00', status: 'Completed', statusColor: 'green' },
+    { id: '8539', customer: 'Diana Prince', date: 'Jan 14, 2024', amount: '$1,200.00', status: 'Processing', statusColor: 'blue' }
+  ]
 
-const topProducts = [
-  { name: 'Organic Coffee Beans', sold: '450', price: '$24.00', icon: 'i-heroicons-beaker' },
-  { name: 'Luxury Cotton Towel', sold: '320', price: '$15.50', icon: 'i-heroicons-receipt-percent' },
-  { name: 'Smart Watch Series 5', sold: '280', price: '$299.00', icon: 'i-heroicons-clock' },
-  { name: 'Wireless Earbuds', sold: '190', price: '$89.00', icon: 'i-heroicons-speaker-wave' }
-]
+  const topProducts = [
+    { name: 'Organic Coffee Beans', sold: '450', price: '$24.00', icon: 'i-heroicons-beaker' },
+    { name: 'Luxury Cotton Towel', sold: '320', price: '$15.50', icon: 'i-heroicons-receipt-percent' },
+    { name: 'Smart Watch Series 5', sold: '280', price: '$299.00', icon: 'i-heroicons-clock' },
+    { name: 'Wireless Earbuds', sold: '190', price: '$89.00', icon: 'i-heroicons-speaker-wave' }
+  ]
 </script>
 
 <style lang="scss" scoped>

@@ -157,12 +157,19 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+/**
+ * IMPORTS
+*/
+  import { ref } from 'vue';
+  import { useRoute } from 'vue-router';
 
-const showMobileMenu = ref(false)
-const route = useRoute()
+/**
+ * DECLARATIONS
+*/
+  const showMobileMenu = ref(false)
+  const route = useRoute()
 
+// <!--DUmmy Data -->
 const groups = [
   {
     label: 'Main',
@@ -201,9 +208,12 @@ const groups = [
   }
 ]
 
-const logoutUser = () => {
-  console.log('Logging out...')
-}
+/**
+ * METHODS
+*/
+  const logoutUser = () => {
+    console.log('Logging out...')
+  }
 </script>
 
 <style scoped>
